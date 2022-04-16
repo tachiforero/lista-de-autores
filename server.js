@@ -12,8 +12,8 @@ require("./server/config/mongoose.config");
 app.use(express.json(), express.urlencoded({ extended: true }));
 
 // Esto es para ir a buscar las rutas (Para esto tiene que haber lo básico en rutas)
-const AllMyProductRoutes = require("./server/routes/product.routes");
-AllMyProductRoutes(app);
+const AllMyPetRoutes = require("./server/routes/pet.routes");
+AllMyPetRoutes(app);
 
 // INICIAL COPY PASTE
 app.listen(8000, () => console.log("SERVIDOR INICIADO"));

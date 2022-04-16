@@ -1,11 +1,9 @@
-.App {
-  text-align: center;
+*{
+  background-color: #afafad;
+  color: whitesmoke;
+  padding: 10px;
 }
 
-*{
-  background-color: #3c4657;
-  color: whitesmoke
-}
 
 .App-logo {
   height: 40vmin;
@@ -64,3 +62,35 @@ a:link{
   text-decoration: none;
 }
 
+.botonback{
+  width: 300px;
+  align-items: center;
+}
+
+.perros{
+  display:flex;
+  flex-direction: column;
+}
+
+.cajadetalle{
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+}
+
+.contador{
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.backtohome{
+  display: flex;
+  justify-content: end;
+}
+
+.botonadoptar{
+  display: flex;
+  justify-content: space-between;
+}

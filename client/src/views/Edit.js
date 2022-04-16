@@ -1,26 +1,32 @@
 import React, {useEffect, useState}from 'react';
-import {BrowserRouter as Router, Switch, Route, useParams} from "react-router-dom";
-import AuthorForm from "../components/AuthorForm"
+import {useParams} from "react-router-dom";
+import Petform from '../components/PetForm';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Edit = () => {
-    const [autor, setAutor] = useState();
+    const navigate = useNavigate();
+    const [pet, setPet] = useState();
     const {id} = useParams();
 
-    useEffect(() => {
-        console.log(autor)
-    }, [autor]);
+    const handlerClick = () => {
+        navigate ("/")
+    }
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/author/"+id)
+        console.log(pet)
+    }, [pet]);
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/pet/"+id)
         .then(res=>{
             console.log(res.data)
-            setAutor(res.data.user)})
+            setPet(res.data.user)})
         .catch(err=>console.log("Error:", err))
         }, []);
 
-    const editarAutor = (values) =>{
-        axios.put("http://localhost:8000/api/author/update/"+id, values)
+    const editarAnimal = (values) =>{
+        axios.put("http://localhost:8000/api/pet/update/"+id, values)
         .then(res=>{
             console.log(res.data)})
         .catch(err=>console.log("Error:", err))
@@ -28,7 +34,8 @@ const Edit = () => {
 
     return (
         <div>
-            {autor&&<AuthorForm onSubmitProp={editarAutor} initialName={autor?.firstName}></AuthorForm>}
+            {pet&&<Petform onSubmitProp={editarAnimal} name={pet?.name} type={pet?.type} petdescription={pet?.petdescription} skills1={pet?.skills[0]} skills2={pet?.skills[1]} skills3={pet?.skills[2]}></Petform>}
+            <button className="hola btn btn-primary" type="submit" onClick={handlerClick}>Volver</button>
         </div>
     );
 }
